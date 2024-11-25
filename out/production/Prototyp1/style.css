@@ -1,0 +1,11 @@
+VBox {
+    -fx-spacing: 10px;
+    padding: 10px;
+    -fx-padding: 10px;
+}
+
+.button {
+    -fx-padding: 10px;
+    padding: 10px;
+    -fx-pref-width: 180px;
+}

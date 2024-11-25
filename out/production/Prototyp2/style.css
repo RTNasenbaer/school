@@ -1,0 +1,76 @@
+/* General VBox styling */
+VBox {
+    -fx-spacing: 10px;
+    -fx-padding: 10px;
+}
+
+/* General button styling */
+.button {
+    -fx-padding: 10px;
+    -fx-pref-width: 180px;
+    -fx-pref-height: 50px;
+    -fx-background-radius: 20px; /* Rounded corners */
+    -fx-border-radius: 20px; /* Rounded corners */
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #5E6472; /* Text color */
+}
+
+/* Specific button styles */
+.close-button {
+    -fx-background-color: #FFA69E;
+}
+
+.insert-button {
+    -fx-background-color: #FAF3DD;
+}
+
+.remove-button {
+    -fx-background-color: #B8F2E6;
+}
+
+.count-button {
+    -fx-background-color: #AED9E0;
+}
+
+/* Spinner styling */
+.position-spinner {
+    -fx-background-color: #FAF3DD;
+    /*-fx-border-color: #5E6472;*/
+    -fx-border-width: 2px;
+    -fx-background-radius: 20px; /* Rounded corners */
+    -fx-border-radius: 20px; /* Rounded corners */
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #5E6472; /* Text color */
+}
+
+/* TextField styling */
+.input-field {
+    -fx-background-color: #B8F2E6;
+    /*-fx-border-color: #5E6472;*/
+    -fx-background-radius: 20px; /* Rounded corners */
+    -fx-border-radius: 20px; /* Rounded corners */
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+}
+
+/* TextArea styling */
+.output-list {
+    -fx-background-color: #FAF3DD;
+    /*-fx-border-color: #5E6472;*/
+    -fx-background-radius: 20px; /* Rounded corners */
+    -fx-border-radius: 20px; /* Rounded corners */
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+}
+
+/* Label styling */
+.output-field {
+    -fx-background-color: #AED9E0;
+    /*-fx-border-color: #5E6472;*/
+    -fx-background-radius: 20px; /* Rounded corners */
+    -fx-border-radius: 20px; /* Rounded corners */
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+}
