@@ -7,16 +7,16 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Queue_GUI extends Application {
-    Queue liste = new Queue();
+    Queue list = new Queue();
     boolean active = false;
-    // WarteSchlange/Queue FIFO
+    // Queue FIFO
 
     public static void main(String[] args) {
         Application.launch(args);
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         Button btnInsert = new Button("Insert");
         btnInsert.getStyleClass().add("insert-button");
         RadioButton activePosition1 = new RadioButton();
@@ -24,7 +24,7 @@ public class Queue_GUI extends Application {
         btnRemove.getStyleClass().add("remove-button");
         RadioButton activePosition2 = new RadioButton();
 //        activePosition2.setDisable(true);
-        Spinner<Integer> spiPosition = new Spinner<>(1, liste.getAnzahl() + 1, liste.getAnzahl() + 1);
+        Spinner<Integer> spiPosition = new Spinner<>(1, list.count() + 1, list.count() + 1);
         spiPosition.getStyleClass().add("position-spinner");
         spiPosition.setEditable(true);
         Button btnCount = new Button("Count");
@@ -32,14 +32,14 @@ public class Queue_GUI extends Application {
         Button btnClose = new Button("Close");
         btnClose.getStyleClass().add("close-button");
 
-        TextField eingabeZeile = new TextField();
-        eingabeZeile.getStyleClass().add("input-field");
-        TextArea ausgabeListe = new TextArea();
-        ausgabeListe.getStyleClass().add("output-list");
-        Label ausgabeZeile = new Label("waiting...");
-        ausgabeZeile.getStyleClass().add("output-field");
-        ausgabeListe.setPrefSize(200, 200);
-        ausgabeListe.setEditable(false);
+        TextField inputField = new TextField();
+        inputField.getStyleClass().add("input-field");
+        TextArea outputList = new TextArea();
+        outputList.getStyleClass().add("output-list");
+        Label outputField = new Label("waiting...");
+        outputField.getStyleClass().add("output-field");
+        outputList.setPrefSize(200, 200);
+        outputList.setEditable(false);
         TextField searchBar = new TextField();
         searchBar.getStyleClass().add("search-bar");
         searchBar.setDisable(true);
@@ -48,9 +48,9 @@ public class Queue_GUI extends Application {
         HBox insert = new HBox(btnInsert, activePosition1);
         HBox extract = new HBox(btnRemove, activePosition2);
         VBox buttons = new VBox(insert, extract, spiPosition, btnCount, btnClose);
-        VBox list = new VBox(ausgabeListe);
+        VBox list = new VBox(outputList);
         HBox horizontalBox = new HBox(buttons, list);
-        VBox root = new VBox(eingabeZeile, horizontalBox, ausgabeZeile);
+        VBox root = new VBox(inputField, horizontalBox, outputField);
         root.getStyleClass().add("everything");
 
         StackPane stackPane = new StackPane(root, searchBar);
@@ -60,28 +60,28 @@ public class Queue_GUI extends Application {
         sc.getStylesheets().add("style.css");
 
         stage.setScene(sc);
-        stage.setTitle("WarteSchlange (FirstList/FIFO)");
+        stage.setTitle("Queue (FirstList/FIFO)");
         stage.show();
 
         btnInsert.setOnAction(e -> {
-            einfuegen(activePosition1, spiPosition, eingabeZeile, ausgabeListe);
-            System.out.println(spiPosition.getValue() + " | " + liste.getAnzahl());
+            insert(activePosition1, spiPosition, inputField, outputList);
+            System.out.println(spiPosition.getValue() + " | " + this.list.count());
 
         });
-        eingabeZeile.setOnKeyPressed(e -> {
+        inputField.setOnKeyPressed(e -> {
             if (e.getCode().toString().equals("ENTER")) {
-                einfuegen(activePosition1, spiPosition, eingabeZeile, ausgabeListe);
-                System.out.println(spiPosition.getValue() + " | " + liste.getAnzahl());
+                insert(activePosition1, spiPosition, inputField, outputList);
+                System.out.println(spiPosition.getValue() + " | " + this.list.count());
             }
         });
         btnRemove.setOnAction(e -> {
-            entnehmen(activePosition2, ausgabeZeile, spiPosition, eingabeZeile, ausgabeListe);
-            System.out.println(spiPosition.getValue() + " | " + liste.getAnzahl());
+            remove(activePosition2, outputField, spiPosition, inputField, outputList);
+            System.out.println(spiPosition.getValue() + " | " + this.list.count());
 
         });
         btnCount.setOnAction(e -> {
-            if (!liste.listeLeer()) {
-                ausgabeZeile.setText(""+liste.getAnzahl());
+            if (this.list.nonEmptyList()) {
+                outputField.setText(""+ this.list.count());
             }
         });
         btnClose.setOnAction(e -> stage.close());
@@ -97,49 +97,46 @@ public class Queue_GUI extends Application {
                     searchBar.setDisable(true);
                     searchBar.setVisible(false);
                     root.setDisable(false);
-                    eingabeZeile.requestFocus();
+                    inputField.requestFocus();
                     active = false;
                 }
             }
-            if (active) if (!searchBar.getText().equals("")) if (e.getCode().toString().equals("ENTER")) {
+            if (active) if (!searchBar.getText().isEmpty()) if (e.getCode().toString().equals("ENTER")) {
                 String input = searchBar.getText();
                 searchBar.setDisable(true);
                 searchBar.setVisible(false);
                 root.setDisable(false);
-                eingabeZeile.requestFocus();
+                inputField.requestFocus();
                 active = false;
-                ausgabeZeile.setText((liste.suche(input) == null) ? "Patient nicht gefunden!" : liste.suche(input).getInfo() + " gefunden!");
+                outputField.setText((this.list.search(input) == null) ? "Patient not found!" : this.list.search(input).getInfo() + " found!");
             }
         });
     }
 
-    private void entnehmen(RadioButton activePosition2, Label ausgabeZeile, Spinner<Integer> spiPosition, TextField eingabeZeile, TextArea ausgabeListe) {
+    private void remove(RadioButton activePosition2, Label outputField, Spinner<Integer> spiPosition, TextField inputField, TextArea outputList) {
         if (activePosition2.isSelected()) {
-            if (!liste.listeLeer()) {
-                ausgabeZeile.setText(liste.entnehmen(liste.suche(eingabeZeile.getText())));
-                ausgabeListe.setText(liste.anzeigen());
-                spiPosition.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, liste.getAnzahl() +1, liste.getAnzahl() + 1));
-            } else ausgabeZeile.setText("Liste ist leer!");
+            if (list.nonEmptyList()) {
+                outputField.setText(list.remove(list.search(inputField.getText())));
+                outputList.setText(list.display());
+                spiPosition.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, list.count() +1, list.count() + 1));
+            } else outputField.setText("List empty!");
         } else {
-            if (!liste.listeLeer()) {
-                ausgabeZeile.setText(liste.entnehmen());
-                ausgabeListe.setText(liste.anzeigen());
-                spiPosition.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, liste.getAnzahl() +1, liste.getAnzahl() + 1));
-            } else ausgabeZeile.setText("Liste ist leer!");
+            if (list.nonEmptyList()) {
+                outputField.setText(list.remove());
+                outputList.setText(list.display());
+                spiPosition.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, list.count() +1, list.count() + 1));
+            } else outputField.setText("List empty!");
         }
     }
 
-    private void einfuegen(RadioButton activePosition1, Spinner<Integer> spiPosition, TextField eingabeZeile, TextArea ausgabeListe) {
+    private void insert(RadioButton activePosition1, Spinner<Integer> spiPosition, TextField inputField, TextArea outputList) {
         if (activePosition1.isSelected()) {
-            liste.einfuegen(new Patient(eingabeZeile.getText(), (int) (Math.random()*100)), spiPosition.getValue());
-            ausgabeListe.setText(liste.anzeigen());
-            eingabeZeile.clear();
-            spiPosition.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, liste.getAnzahl() + 1, liste.getAnzahl() + 1));
+            list.insert(new Patient(inputField.getText(), (int) (Math.random()*100)), spiPosition.getValue());
         } else {
-            liste.einfuegen(new Patient(eingabeZeile.getText(), (int) (Math.random()*100)));
-            ausgabeListe.setText(liste.anzeigen());
-            eingabeZeile.clear();
-            spiPosition.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, liste.getAnzahl() + 1, liste.getAnzahl() + 1));
+            list.insert(new Patient(inputField.getText(), (int) (Math.random()*100)));
         }
+        outputList.setText(list.display());
+        inputField.clear();
+        spiPosition.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, list.count() + 1, list.count() + 1));
     }
 }

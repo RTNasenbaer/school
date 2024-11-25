@@ -1,35 +1,35 @@
 public abstract class QueueElement {
 
-    public int getAnzahl() {
+    public int countLeft() {
         return 0;
     }
 
-    public boolean listeLeer() {
-        return true;
+    public boolean nonEmptyList() {
+        return false;
     }
 
-    public Element suche(String input) {
+    public Element search(String input) {
         return null;
     }
 
-    public QueueElement entnehmen(Element element) {
+    public QueueElement remove(Element element) {
         return this;
     }
 
-    public QueueElement entnehmen() {
+    public QueueElement remove() {
         return this;
     }
 
-    public String anzeigen() {
+    public String display() {
         return "";
     }
 
-    public QueueElement einfuegen(Element element, int value) {
-        return new Node(element, new Abschluss());
+    public QueueElement insert(Element element, int value) {
+        return new Node(element, new End());
     }
 
-    public QueueElement einfuegen(Element element) {
-        return new Node(element, new Abschluss());
+    public QueueElement insert(Element element) {
+        return new Node(element, new End());
     }
 
     public String getInfo() {

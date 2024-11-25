@@ -4,45 +4,45 @@ public class Queue {
 
 
     Queue() {
-        start = new Abschluss();
+        start = new End();
     }
 
-    public int getAnzahl() {
-        return start.getAnzahl();
+    public int count() {
+        return start.countLeft();
     }
 
-    public boolean listeLeer() {
-        return start.listeLeer();
+    public boolean nonEmptyList() {
+        return start.nonEmptyList();
     }
 
-    public Element suche(String input) {
-        return start.suche(input);
+    public Element search(String input) {
+        return start.search(input);
     }
 
-    public String entnehmen(Element element) {
+    public String remove(Element element) {
         String output = start.getInfo();
-        if (element!=null) if (start.getInfo().equals(element.getInfo())) start = start.entnehmen();
-        else output = start.entnehmen(element).getInfo();
+        if (element!=null) if (start.getInfo().equals(element.getInfo())) start = start.remove();
+        else output = start.remove(element).getInfo();
         return output;
     }
 
-    public String entnehmen() {
+    public String remove() {
         String output = start.getInfo();
-        start = start.entnehmen();
+        start = start.remove();
         return output;
     }
 
-    public String anzeigen() {
-        return start.anzeigen();
+    public String display() {
+        return start.display();
     }
 
-    public void einfuegen(Element element, int value) {
+    public void insert(Element element, int value) {
         if (value==1) start = new Node(element, start);
-        else start = start.einfuegen(element, value-1);
+        else start = start.insert(element, value-1);
     }
 
-    public void einfuegen(Element element) {
-        start = start.einfuegen(element);
+    public void insert(Element element) {
+        start = start.insert(element);
     }
 
 }
