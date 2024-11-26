@@ -35,4 +35,5 @@ public abstract class QueueElement {
     public String getInfo() {
         return "";
     }
+    
 }
