@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Test",
+            "request": "launch",
+            "mainClass": "Test",
+            "projectName": "school_de566fd6"
+        },
+        {
+            "type": "java",
             "name": "Queue_GUI",
             "request": "launch",
             "mainClass": "Queue_GUI",
