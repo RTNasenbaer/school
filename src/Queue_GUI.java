@@ -116,13 +116,13 @@ public class Queue_GUI extends Application {
     private void remove(RadioButton activePosition2, Label outputField, Spinner<Integer> spiPosition, TextField inputField, TextArea outputList) {
         if (activePosition2.isSelected()) {
             if (list.nonEmptyList()) {
-                outputField.setText(list.remove(list.search(inputField.getText())));
+                outputField.setText(list.removeSpecified(list.search(inputField.getText())).getInfo());
                 outputList.setText(list.display());
                 spiPosition.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, list.count() +1, list.count() + 1));
             } else outputField.setText("List empty!");
         } else {
             if (list.nonEmptyList()) {
-                outputField.setText(list.remove());
+                outputField.setText(list.removeFirst().getInfo());
                 outputList.setText(list.display());
                 spiPosition.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, list.count() +1, list.count() + 1));
             } else outputField.setText("List empty!");
@@ -131,9 +131,9 @@ public class Queue_GUI extends Application {
 
     private void insert(RadioButton activePosition1, Spinner<Integer> spiPosition, TextField inputField, TextArea outputList) {
         if (activePosition1.isSelected()) {
-            list.insert(new Patient(inputField.getText(), (int) (Math.random()*100)), spiPosition.getValue());
+            list.insertAtNumber(new Patient(inputField.getText(), (int) (Math.random()*100)), spiPosition.getValue());
         } else {
-            list.insert(new Patient(inputField.getText(), (int) (Math.random()*100)));
+            list.insertInBack(new Patient(inputField.getText(), (int) (Math.random()*100)));
         }
         outputList.setText(list.display());
         inputField.clear();

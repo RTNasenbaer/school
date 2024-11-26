@@ -9,14 +9,18 @@ public abstract class QueueElement {
     }
 
     public Element search(String input) {
-        return null;
+        return new Patient(input + " existiert nicht", 0);
     }
 
-    public QueueElement remove(Element element) {
+    public QueueElement removeSpecified(Element element) {
         return this;
     }
 
-    public QueueElement remove() {
+    public QueueElement removeFirst() {
+        return this;
+    }
+
+    public QueueElement removeLast() {
         return this;
     }
 
@@ -24,16 +28,31 @@ public abstract class QueueElement {
         return "";
     }
 
-    public QueueElement insert(Element element, int value) {
+    public QueueElement insertAtNumber(Element element, int value) {
         return new Node(element, new End());
     }
 
-    public QueueElement insert(Element element) {
+    public QueueElement insertInBack(Element element) {
         return new Node(element, new End());
     }
 
     public String getInfo() {
         return "";
     }
-    
+
+    public QueueElement insertInFront(Element element) {
+        return new Node(element, new End());
+    }
+
+    public QueueElement insertBefore(Element element1, Element element2) {
+        return new Node(element1, new End());
+    }
+
+    public QueueElement insertSorted(Element element) {
+        return new Node(element, new End());
+    }
+
+    public QueueElement getEnd() {
+        return this;
+    }
 }

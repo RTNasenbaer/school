@@ -40,13 +40,13 @@ public class QueueConsole {
     }
 
     private void insert(Patient patient) {
-        list.insert(patient);
+        list.insertInBack(patient);
         System.out.println("Inserted: " + patient.getInfo());
     }
 
     private void remove() {
         if (list.nonEmptyList()) {
-            System.out.println("Removed: " + list.remove());
+            System.out.println("Removed: " + list.removeFirst());
         } else {
             System.out.println("List is empty!");
         }

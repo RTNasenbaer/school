@@ -19,30 +19,44 @@ public class Queue {
         return start.search(input);
     }
 
-    public String remove(Element element) {
-        String output = start.getInfo();
-        if (element!=null) if (start.getInfo().equals(element.getInfo())) start = start.remove();
-        else output = start.remove(element).getInfo();
-        return output;
+    public QueueElement removeSpecified(Element element) {
+        if (start.getInfo().equals(element.getInfo())) return start = start.removeFirst();
+        else return start.removeSpecified(element);
     }
 
-    public String remove() {
-        String output = start.getInfo();
-        start = start.remove();
-        return output;
+    public QueueElement removeFirst() {
+        return start = start.removeFirst();
+    }
+
+    public QueueElement removeLast() {
+        QueueElement end = start.getEnd();
+        start = start.removeLast();
+        return end;
     }
 
     public String display() {
         return start.display();
     }
 
-    public void insert(Element element, int value) {
+    public void insertAtNumber(Element element, int value) {
         if (value==1) start = new Node(element, start);
-        else start = start.insert(element, value-1);
+        else start = start.insertAtNumber(element, value-1);
     }
 
-    public void insert(Element element) {
-        start = start.insert(element);
+    public void insertInBack(Element element) {
+        start = start.insertInBack(element);
+    }
+
+    public void insertInFront(Element element) {
+        start = start.insertInFront(element);
+    }
+
+    public void insertBefore(Element element1, Element element2) {
+        start = start.insertBefore(element1, element2);
+    }
+
+    public void insertSorted(Element element) {
+        start = start.insertSorted(element);
     }
 
 }
