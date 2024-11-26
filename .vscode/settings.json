@@ -4,14 +4,14 @@
     ],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/javafx.web.jar",
-        "lib/javafx.swing.jar",
-        "lib/javafx.media.jar",
-        "lib/javafx.graphics.jar",
-        "lib/javafx.fxml.jar",
-        "lib/javafx.controls.jar",
-        "lib/javafx.base.jar",
-        "lib/javafx-swt.jar"
+        "/workspaces/school/lib/javafx.base.jar",
+        "/workspaces/school/lib/javafx.media.jar",
+        "/workspaces/school/lib/javafx.graphics.jar",
+        "/workspaces/school/lib/javafx.controls.jar",
+        "/workspaces/school/lib/javafx-swt.jar",
+        "/workspaces/school/lib/javafx.web.jar",
+        "/workspaces/school/lib/javafx.fxml.jar",
+        "/workspaces/school/lib/javafx.swing.jar"
     ],
     "java.dependency.packagePresentation": "hierarchical"
 }
