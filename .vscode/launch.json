@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "QueueConsole",
+            "request": "launch",
+            "mainClass": "QueueConsole",
+            "projectName": "school_de566fd6"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -16,7 +23,7 @@
             "request": "launch",
             "mainClass": "WarteSchlange_GUI",
             "projectName": "Prototyp1_245a47e0",
-            "vmArgs": "--module-path /home/rtnasenbaer/Documents/Workspace/javafx-sdk-23/lib/ --add-modules javafx.controls,javafx.fxml",
+            "vmArgs": "--module-path /home/rtnasenbaer/Documents/Workspace/javafx-sdk-23/lib/ --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }
