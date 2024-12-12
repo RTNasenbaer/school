@@ -7,7 +7,18 @@ public class Baum {
     }
 
     public void einfuegen(Datenelement element) {
-        wurzel.einfuegen(element);
+        wurzel = wurzel.einfuegen(element);
     }
 
+    public String preOrder() {
+        return wurzel.preOrder();
+    }
+
+    public String inOrder() {
+        return wurzel.inOrder();
+    }
+
+    public String postOrder() {
+        return wurzel.postOrder();
+    }
 }

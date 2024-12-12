@@ -6,6 +6,8 @@ public class Knoten extends Baumelement {
 
     public Knoten(Datenelement element) {
         daten = element;
+        links = new Abschluss();
+        rechts = new Abschluss();
     }
 
     @Override
@@ -19,16 +21,16 @@ public class Knoten extends Baumelement {
 
     @Override
     public String preOrder() {
-        return links.preOrder() + " " + rechts.preOrder() + " " + daten.ausgeben();
+        return daten.ausgeben() + "/" + links.preOrder() + rechts.preOrder();
     }
 
     @Override
     public String inOrder() {
-        return links.inOrder() + " " + daten.ausgeben() + rechts.inOrder();
+        return links.inOrder() + daten.ausgeben() + "/" + rechts.inOrder();
     }
 
     @Override
     public String postOrder() {
-        return daten.ausgeben() + " " + links.postOrder() + " " + rechts.postOrder();
+        return links.postOrder() + rechts.postOrder() + daten.ausgeben() + "/";
     }
 }
