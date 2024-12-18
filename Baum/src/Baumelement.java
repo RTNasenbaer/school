@@ -8,4 +8,5 @@ public abstract class Baumelement {
 
     public abstract String postOrder();
 
+    public abstract String translate(String vokabel);
 }

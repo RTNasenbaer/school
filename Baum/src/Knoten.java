@@ -33,4 +33,9 @@ public class Knoten extends Baumelement {
     public String postOrder() {
         return links.postOrder() + rechts.postOrder() + daten.ausgeben() + "/";
     }
+
+    @Override
+    public String translate(String vokabel) {
+        
+    }
 }

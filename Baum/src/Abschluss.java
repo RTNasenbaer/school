@@ -18,4 +18,10 @@ public class Abschluss extends Baumelement {
     public String postOrder() {
         return "";
     }
+
+    @Override
+    public String translate(String vokabel) {
+        return "";
+    }
+
 }

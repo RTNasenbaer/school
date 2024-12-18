@@ -21,4 +21,8 @@ public class Baum {
     public String postOrder() {
         return wurzel.postOrder();
     }
+
+    public String translate(String vokabel) {
+        return vokabel + " <--> " + wurzel.translate(vokabel);
+    }
 }

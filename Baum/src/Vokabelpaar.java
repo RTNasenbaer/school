@@ -1,11 +1,15 @@
 public class Vokabelpaar implements Datenelement {
 
-    public Vokabel deutsch;
-    public Vokabel englisch;
+    public Datenelement first;
+    public Datenelement second;
 
-    public Vokabelpaar(String deutsch, String englisch) {
-        this.deutsch = new Vokabel(deutsch);
-        this.englisch = new Vokabel(englisch);
+    public Vokabelpaar(Datenelement first, Datenelement second) {
+        this.first = first;
+        this.second = second;
+    }
+
+    public Datenelement switch() {
+        return new Vokabelpaar(second, first);
     }
 
     @Override
@@ -15,6 +19,7 @@ public class Vokabelpaar implements Datenelement {
 
     @Override
     public String ausgeben() {
-        return "";
+        return first.ausgeben() + " - " + second.ausgeben();
     }
+
 }
