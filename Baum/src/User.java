@@ -6,7 +6,7 @@ public class User {
     }
 
     public void runZahlen() {
-        int[] zahlen = {31,12,29,19,17,47,38,49};
+        int[] zahlen = {31, 12, 29, 19, 17, 47, 38, 49};
         Baum baum = new Baum();
         for (int zahl : zahlen) {
             baum.einfuegen(new Zahl(zahl));
@@ -18,49 +18,51 @@ public class User {
 
     public void runWoerterbuch() {
         Vokabelpaar[] vokabelpaare = {
-            new Vokabelpaar(new Vokabel("Baum"), new Vokabel("tree")),
-            new Vokabelpaar(new Vokabel("Haus"), new Vokabel("house")),
-            new Vokabelpaar(new Vokabel("Auto"), new Vokabel("car")),
-            new Vokabelpaar(new Vokabel("Hund"), new Vokabel("dog")),
-            new Vokabelpaar(new Vokabel("Katze"), new Vokabel("cat")),
-            new Vokabelpaar(new Vokabel("Maus"), new Vokabel("mouse")),
-            new Vokabelpaar(new Vokabel("Vogel"), new Vokabel("bird")),
-            new Vokabelpaar(new Vokabel("Fisch"), new Vokabel("fish")),
-            new Vokabelpaar(new Vokabel("Pferd"), new Vokabel("horse")),
-            new Vokabelpaar(new Vokabel("Kuh"), new Vokabel("cow")),
-            new Vokabelpaar(new Vokabel("Schwein"), new Vokabel("pig")),
-            new Vokabelpaar(new Vokabel("Schaf"), new Vokabel("sheep")),
-            new Vokabelpaar(new Vokabel("Ziege"), new Vokabel("goat")),
-            new Vokabelpaar(new Vokabel("Huhn"), new Vokabel("chicken")),
-            new Vokabelpaar(new Vokabel("Ente"), new Vokabel("duck")),
-            new Vokabelpaar(new Vokabel("Gans"), new Vokabel("goose")),
-            new Vokabelpaar(new Vokabel("Ei"), new Vokabel("egg")),
-            new Vokabelpaar(new Vokabel("Milch"), new Vokabel("milk")),
-            new Vokabelpaar(new Vokabel("Butter"), new Vokabel("butter")),
-            new Vokabelpaar(new Vokabel("Käse"), new Vokabel("cheese")),
-            new Vokabelpaar(new Vokabel("Brot"), new Vokabel("bread")),
-            new Vokabelpaar(new Vokabel("Wurst"), new Vokabel("sausage")),
-            new Vokabelpaar(new Vokabel("Fleisch"), new Vokabel("meat")),
-            new Vokabelpaar(new Vokabel("Gemüse"), new Vokabel("vegetables")),
-            new Vokabelpaar(new Vokabel("Obst"), new Vokabel("fruit")),
-            new Vokabelpaar(new Vokabel("Kartoffel"), new Vokabel("potato")),
-            new Vokabelpaar(new Vokabel("Reis"), new Vokabel("rice")),
-            new Vokabelpaar(new Vokabel("Nudeln"), new Vokabel("pasta")),
-            new Vokabelpaar(new Vokabel("Suppe"), new Vokabel("soup")),
-            new Vokabelpaar(new Vokabel("Salat"), new Vokabel("salad"))
+                new Vokabelpaar(new Vokabel("Baum"), new Vokabel("tree")),
+                new Vokabelpaar(new Vokabel("Haus"), new Vokabel("house")),
+                new Vokabelpaar(new Vokabel("Auto"), new Vokabel("car")),
+                new Vokabelpaar(new Vokabel("Hund"), new Vokabel("dog")),
+                new Vokabelpaar(new Vokabel("Katze"), new Vokabel("cat")),
+                new Vokabelpaar(new Vokabel("Maus"), new Vokabel("mouse")),
+                new Vokabelpaar(new Vokabel("Vogel"), new Vokabel("bird")),
+                new Vokabelpaar(new Vokabel("Fisch"), new Vokabel("fish")),
+                new Vokabelpaar(new Vokabel("Pferd"), new Vokabel("horse")),
+                new Vokabelpaar(new Vokabel("Kuh"), new Vokabel("cow")),
+                new Vokabelpaar(new Vokabel("Schwein"), new Vokabel("pig")),
+                new Vokabelpaar(new Vokabel("Schaf"), new Vokabel("sheep")),
+                new Vokabelpaar(new Vokabel("Ziege"), new Vokabel("goat")),
+                new Vokabelpaar(new Vokabel("Huhn"), new Vokabel("chicken")),
+                new Vokabelpaar(new Vokabel("Ente"), new Vokabel("duck")),
+                new Vokabelpaar(new Vokabel("Gans"), new Vokabel("goose")),
+                new Vokabelpaar(new Vokabel("Ei"), new Vokabel("egg")),
+                new Vokabelpaar(new Vokabel("Milch"), new Vokabel("milk")),
+                new Vokabelpaar(new Vokabel("Butter"), new Vokabel("butter")),
+                new Vokabelpaar(new Vokabel("Käse"), new Vokabel("cheese")),
+                new Vokabelpaar(new Vokabel("Brot"), new Vokabel("bread")),
+                new Vokabelpaar(new Vokabel("Wurst"), new Vokabel("sausage")),
+                new Vokabelpaar(new Vokabel("Fleisch"), new Vokabel("meat")),
+                new Vokabelpaar(new Vokabel("Gemüse"), new Vokabel("vegetables")),
+                new Vokabelpaar(new Vokabel("Obst"), new Vokabel("fruit")),
+                new Vokabelpaar(new Vokabel("Kartoffel"), new Vokabel("potato")),
+                new Vokabelpaar(new Vokabel("Reis"), new Vokabel("rice")),
+                new Vokabelpaar(new Vokabel("Nudeln"), new Vokabel("pasta")),
+                new Vokabelpaar(new Vokabel("Suppe"), new Vokabel("soup")),
+                new Vokabelpaar(new Vokabel("Salat"), new Vokabel("salad"))
         };
-        Baum baum1 = new Baum();
+
+        Baum baum = new Baum();
         for (Vokabelpaar vokabelpaar : vokabelpaare) {
-            baum1.einfuegen(vokabelpaar);
+            baum.einfuegen(vokabelpaar);
         }
-        Baum baum2 = new Baum();
+        Baum reversed = new Baum();
         for (Vokabelpaar vokabelpaar : vokabelpaare) {
-            baum2.einfuegen(vokabelpaar);
+            reversed.einfuegen(vokabelpaar.switchFirstAndSecond());
         }
-        System.out.println(baum1.translate("Baum"));
-        System.out.println(baum2.translate("salad"));
-        //System.out.println(baum1.inOrder());
-        //System.out.println(baum2.inOrder());
+
+        System.out.println(baum.hoehe());
+
+        System.out.println(baum.translate(new Vokabel("Baum")));
+        System.out.println(reversed.translate(new Vokabel("butter")));
 
     }
 

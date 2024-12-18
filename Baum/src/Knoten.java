@@ -35,7 +35,19 @@ public class Knoten extends Baumelement {
     }
 
     @Override
-    public String translate(String vokabel) {
-        
+    public String translate(Datenelement element) {
+        if (daten.ausgeben().contains(element.ausgeben())) {
+            return daten.ausgeben().split(" ")[2];
+        }
+        if (daten.check(element)) {
+            return links.translate(element);
+        } else {
+            return rechts.translate(element);
+        }
+    }
+
+    @Override
+    public int hoehe() {
+        return 1 + Math.max(links.hoehe(), rechts.hoehe());
     }
 }

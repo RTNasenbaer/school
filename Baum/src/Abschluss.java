@@ -20,8 +20,13 @@ public class Abschluss extends Baumelement {
     }
 
     @Override
-    public String translate(String vokabel) {
+    public String translate(Datenelement element) {
         return "";
+    }
+
+    @Override
+    public int hoehe() {
+        return 0;
     }
 
 }

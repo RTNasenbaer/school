@@ -22,7 +22,11 @@ public class Baum {
         return wurzel.postOrder();
     }
 
-    public String translate(String vokabel) {
-        return vokabel + " <--> " + wurzel.translate(vokabel);
+    public String translate(Datenelement element) {
+        return element.ausgeben() + " <-> " + wurzel.translate(element);
+    }
+
+    public int hoehe() {
+        return wurzel.hoehe();
     }
 }

@@ -8,14 +8,18 @@ public class Vokabelpaar implements Datenelement {
         this.second = second;
     }
 
-    public Datenelement switch() {
-        return new Vokabelpaar(second, first);
-    }
-
     @Override
     public boolean check(Datenelement element) {
+        if (element instanceof Vokabelpaar) if (first.ausgeben().compareTo(((Vokabelpaar) element).first.ausgeben()) > 0)
+            return true;
+        if (element instanceof Vokabel) if (first.ausgeben().compareTo(((Vokabel) element).ausgeben()) > 0)
+            return true;
         return false;
     }
+
+    public Vokabelpaar switchFirstAndSecond() {
+    return new Vokabelpaar(this.second, this.first);
+}
 
     @Override
     public String ausgeben() {

@@ -8,5 +8,7 @@ public abstract class Baumelement {
 
     public abstract String postOrder();
 
-    public abstract String translate(String vokabel);
+    public abstract String translate(Datenelement element);
+
+    public abstract int hoehe();
 }
