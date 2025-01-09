@@ -61,8 +61,8 @@ public class User {
 
         System.out.println(baum.hoehe());
 
-        System.out.println(baum.translate(new Vokabel("Baum")));
-        System.out.println(reversed.translate(new Vokabel("butter")));
+        System.out.println(baum.translate(vokabelpaare[(int) (Math.random()*(vokabelpaare.length-1))].first));
+        System.out.println(reversed.translate(vokabelpaare[(int) (Math.random()*(vokabelpaare.length-1))].second));
 
     }
 
