@@ -19,7 +19,7 @@ public class Knoten extends Baumelement{
 
     @Override
     public String eMailsAusgeben() {
-        return nachfolgerLi.eMailsAusgeben() + abonnent.ausgeben() + " | " + nachfolgerRe.eMailsAusgeben();
+        return nachfolgerLi.eMailsAusgeben() + abonnent.ausgeben() + nachfolgerRe.eMailsAusgeben();
     }
 
 }

@@ -7,7 +7,7 @@ public class Abschluss extends Baumelement{
 
     @Override
     public String eMailsAusgeben() {
-        return "";
+        return " | ";
     }
 
 }
