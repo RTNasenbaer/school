@@ -2,9 +2,40 @@ import java.awt.Color;
 
 public class Turtled extends Turtle {
     public static void main(String[] args) throws Exception {
-        // new Turtled().circle(2);
-        // new Turtled().smallerSquare(100);
+        new Turtled();
 
+    }
+
+    Turtled() {
+        setzeSpeed(4);
+//        kochkurve(1500, 5);
+        pythagoBaum(100, 45, 3);
+        start();
+    }
+
+    private void pythagoBaum(int laenge, double winkel, int tiefe) {
+        double laengeAn = laenge*Math.cos(winkel*(Math.PI/180));
+        double laengeGe = laenge*Math.sin(winkel*(Math.PI/180));
+        for (int i = 1; i <= 7; i++) {
+            gehe(laenge);
+            drehe(-90);
+        }
+
+
+    }
+
+    private void kochkurve(int laenge, int tiefe) {
+        if (tiefe == 0) {
+            gehe(laenge);
+            return;
+        }
+        kochkurve(laenge / 3, tiefe - 1);
+        drehe(60);
+        kochkurve(laenge / 3, tiefe - 1);
+        drehe(-120);
+        kochkurve(laenge / 3, tiefe - 1);
+        drehe(60);
+        kochkurve(laenge / 3, tiefe - 1);
     }
 
     public void circle(int size) {

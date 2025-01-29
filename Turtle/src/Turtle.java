@@ -37,11 +37,11 @@ public class Turtle extends JFrame {
 	private ArrayList<Linie> linien = new ArrayList<Linie>();
 
 	public Turtle() {
-		this(600, 400, 0);
+		this(960, 540, 0);
 	}
 
 	public Turtle(double x, double y, double richtung) {
-		setSize(1200, 800);
+		setSize(1920, 1080);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		reset();
