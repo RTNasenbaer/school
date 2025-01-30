@@ -7,19 +7,30 @@ public class Turtled extends Turtle {
     }
 
     Turtled() {
-        setzeSpeed(4);
+        setzeSpeed(10);
 //        kochkurve(1500, 5);
-        pythagoBaum(100, 45, 3);
+        pythagoBaum(100, 40, 10);
         start();
     }
 
-    private void pythagoBaum(int laenge, double winkel, int tiefe) {
+    private void pythagoBaum(double laenge, double winkel, int tiefe) {
+        if (tiefe == 0) {
+            gehe(laenge);
+            return;
+        }
         double laengeAn = laenge*Math.cos(winkel*(Math.PI/180));
         double laengeGe = laenge*Math.sin(winkel*(Math.PI/180));
         for (int i = 1; i <= 7; i++) {
             gehe(laenge);
             drehe(-90);
         }
+        drehe(270-winkel);
+        pythagoBaum(laengeAn, winkel, tiefe-1);//gehe(laengeAn);
+        drehe(90);
+        pythagoBaum(laengeGe, winkel, tiefe-1);//gehe(laengeGe);
+        drehe(winkel);
+        gehe(laenge);
+        drehe(-90);
 
 
     }
