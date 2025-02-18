@@ -1,11 +1,11 @@
-import java.util.Arrays;
-
 public class DBNetz {
 
     Graph fahrplan;
 
     public DBNetz() {
         fahrplanAnlegen();
+        fahrplan.ausgabe();
+        fahrplan.breitensuche("Berlin");
 //        for (Knoten k : fahrplan.kn) System.out.println(k.name);
     }
 
