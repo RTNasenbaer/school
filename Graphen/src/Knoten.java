@@ -4,6 +4,6 @@ public class Knoten {
     public boolean visited;
 
     public Knoten(String city0) {
-        name =  city0;
+        name = city0;
     }
 }
