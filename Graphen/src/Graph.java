@@ -26,7 +26,6 @@ public class Graph {
     public void breitensuche(String city0) {
         // Setup
         System.out.println();
-        System.out.println("\u2500".repeat(15*6));
         int start = findeKnoten(city0);
         ArrayList<Integer> queue = new ArrayList<>();
         queue.add(start);
@@ -41,6 +40,7 @@ public class Graph {
                 }
             }
         }
+        System.out.println();
 
 
 
@@ -59,39 +59,45 @@ public class Graph {
     }
 
     public void ausgabe() {
-    int size = anzahlKnoten();
-    int columnWidth = 6;
-    int totalWidth = (size + 1) * columnWidth + 1; // Adjusted width for alignment
-
-    // Top border
-    System.out.println("+" + "─".repeat(totalWidth) + "+");
-
-    // Header row
-    System.out.print("|");
-    System.out.printf("%6s", " ");
-    for (int i = 0; i < size; i++) {
-        System.out.printf("%6s", kn[i].name.substring(0, 4));
-    }
-    System.out.println(" |");
-
-    // Separator line
-    System.out.println("|" + "─".repeat(totalWidth) + "|");
-
-    // Table content
-    for (int i = 0; i < size; i++) {
-        System.out.print("|");
-        System.out.printf("%6s", kn[i].name.substring(0, 4));
-        for (int j = 0; j < size; j++) {
-            if (adj[i][j] != 0)
-                System.out.printf("%6d", adj[i][j]);
-            else
-                System.out.printf("%6s", "──");
+        final String RESET = "\u001B[0m";
+        final String HEADER_COLOR = "\u001B[34m"; // Blue
+        final String NUMBER_COLOR = "\u001B[32m"; // Green
+        final String BORDER_COLOR = "\u001B[33m"; // Yellow
+        final String DASH = "──"; // Double dash for zero values
+    
+        int width = 6; // Fixed column width
+        int totalWidth = (anzahlKnoten() + 1) * width;
+    
+        // Top border
+        System.out.println(BORDER_COLOR + "┌" + "─".repeat(totalWidth) + "┐" + RESET);
+    
+        // Header row
+        System.out.print(BORDER_COLOR + "│" + RESET);
+        System.out.printf("%" + width + "s", " ");
+        for (int i = 0; i < anzahlKnoten(); i++) {
+            System.out.printf(HEADER_COLOR + "%" + width + "s" + RESET, kn[i].name.substring(0, 4));
         }
-        System.out.println(" |");
+        System.out.println(BORDER_COLOR + "│" + RESET);
+    
+        // Separator
+        System.out.println(BORDER_COLOR + "├" + "─".repeat(totalWidth) + "┤" + RESET);
+    
+        // Table rows
+        for (int i = 0; i < anzahlKnoten(); i++) {
+            System.out.print(BORDER_COLOR + "│" + RESET);
+            System.out.printf(HEADER_COLOR + "%" + width + "s" + RESET, kn[i].name.substring(0, 4));
+    
+            for (int j = 0; j < anzahlKnoten(); j++) {
+                if (adj[i][j] != 0)
+                    System.out.printf(NUMBER_COLOR + "%" + width + "d" + RESET, adj[i][j]);
+                else
+                    System.out.printf("%" + width + "s", DASH);
+            }
+    
+            System.out.println(BORDER_COLOR + "│" + RESET);
+        }
+    
+        // Bottom border
+        System.out.println(BORDER_COLOR + "└" + "─".repeat(totalWidth) + "┘" + RESET);
     }
-
-    // Bottom border
-    System.out.println("+" + "─".repeat(totalWidth) + "+");
-}
-
 }
