@@ -61,14 +61,20 @@ public class Graph {
         }
     }
 
-    public void sucheAlle(String city0) {
+    public void sucheAlle(String city0, String city1) {
         for (Knoten k : kn) k.visited = false;
-        sucheAlle(findeKnoten(city0));
+        sucheAlle(findeKnoten(city0), findeKnoten(city1), city0, 0);
         System.out.println();
     }
 
-    private void sucheAlle(int city0Num) {
-
+    private void sucheAlle(int city0Num, int city1Num, String ausgabe, double gewicht) {
+        kn[city0Num].visited = true;
+        if (city0Num == city1Num) {
+            System.out.println(ausgabe + " " + gewicht);
+            return;
+        } else for (int i = 0; i < anzahlKnoten(); i++) {
+            if ((adj[city0Num][i] != 0) && (!kn[i].visited)) sucheAlle(i, city1Num, ausgabe + " " + kn[i].name, gewicht + adj[city0Num][i]);
+        }
     }
 
     public int anzahlKnoten() {
