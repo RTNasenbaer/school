@@ -4,11 +4,15 @@ public class Graph {
 
     public Knoten[] kn;
     public int[][] adj;
+    public double fastestDistance;
+    public String fastestWay;
 
 
     public Graph(int size) {
         kn = new Knoten[size];
         adj = new int[size][size];
+        fastestDistance = Double.MAX_VALUE;
+        fastestWay = "";
     }
 
     public void knoten_hinzufuegen(String city0) {
@@ -63,18 +67,41 @@ public class Graph {
 
     public void sucheAlle(String city0, String city1) {
         for (Knoten k : kn) k.visited = false;
-        sucheAlle(findeKnoten(city0), findeKnoten(city1), city0, 0);
+        sucheAlle(findeKnoten(city0), findeKnoten(city1), city0.substring(0, 4), 0);
         System.out.println();
     }
 
     private void sucheAlle(int city0Num, int city1Num, String ausgabe, double gewicht) {
-        kn[city0Num].visited = true;
         if (city0Num == city1Num) {
-            System.out.println(ausgabe + " " + gewicht);
-            return;
-        } else for (int i = 0; i < anzahlKnoten(); i++) {
-            if ((adj[city0Num][i] != 0) && (!kn[i].visited)) sucheAlle(i, city1Num, ausgabe + " " + kn[i].name, gewicht + adj[city0Num][i]);
+            String[] aus = ausgabe.split("\\s");
+            for (String a : aus) System.out.printf("%6s", a);
+            System.out.print(" (" + gewicht + ")");
+            System.out.println();
+        } else {
+            kn[city0Num].visited = true;
+            for (int i = 0; i < anzahlKnoten(); i++) {
+                if ((adj[city0Num][i] != 0) && (!kn[i].visited)) sucheAlle(i, city1Num, ausgabe + " " + kn[i].name.substring(0, 4), gewicht + adj[city0Num][i]);
+            }
         }
+        kn[city0Num].visited = false;
+    }
+
+    public void sucheKurz(String city0, String city1) {
+        for (Knoten k : kn) k.visited = false;
+        sucheKurz(findeKnoten(city0), findeKnoten(city1), city0.substring(0, 4), 0);
+        System.out.println();
+    }
+
+    public String sucheKurz(int city0Num, int city1Num, String output, double weight) {
+        if (city0Num == city1Num && weight < fastestDistance) {
+            fastestDistance = weight;
+        } else {
+            kn[city0Num].visited = true;
+            for (int i = 0; i < anzahlKnoten(); i++) {
+                if ((adj[city0Num][i] != 0) && (!kn[i].visited)) sucheKurz(i, city1Num, output + " " + kn[i].name.substring(0, 4), weight + adj[city0Num][i]);
+            }
+        }
+        kn[city0Num].visited = false;
     }
 
     public int anzahlKnoten() {

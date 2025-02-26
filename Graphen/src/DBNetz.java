@@ -7,7 +7,7 @@ public class DBNetz {
         fahrplan.ausgabe();
         fahrplan.breitensuche("Berlin");
         fahrplan.tiefensuche("Berlin");
-        fahrplan.sucheAlle("Berlin", "Nürnberg");
+        fahrplan.sucheAlle("Berlin", "München");
 //        for (Knoten k : fahrplan.kn) System.out.println(k.name);
     }
 
