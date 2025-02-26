@@ -89,12 +89,16 @@ public class Graph {
     public void sucheKurz(String city0, String city1) {
         for (Knoten k : kn) k.visited = false;
         sucheKurz(findeKnoten(city0), findeKnoten(city1), city0.substring(0, 4), 0);
+        String[] aus = fastestWay.split("\\s");
+        for (String a : aus) System.out.printf("%6s", a);
+        System.out.print(" (" + fastestDistance + ")");
         System.out.println();
     }
 
-    public String sucheKurz(int city0Num, int city1Num, String output, double weight) {
+    public void sucheKurz(int city0Num, int city1Num, String output, double weight) {
         if (city0Num == city1Num && weight < fastestDistance) {
             fastestDistance = weight;
+            fastestWay = output;
         } else {
             kn[city0Num].visited = true;
             for (int i = 0; i < anzahlKnoten(); i++) {
