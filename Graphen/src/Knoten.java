@@ -1,9 +1,9 @@
 public class Knoten {
 
     public String name;
-    public boolean visited;
+    public boolean besucht;
 
-    public Knoten(String city0) {
-        name = city0;
+    public Knoten(String stadt0) {
+        name = stadt0;
     }
 }

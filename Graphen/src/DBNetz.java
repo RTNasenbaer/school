@@ -9,6 +9,7 @@ public class DBNetz {
         fahrplan.tiefensuche("Berlin");
         fahrplan.sucheAlle("Berlin", "München");
         fahrplan.sucheKurz("Berlin", "München");
+        fahrplan.durchreise("Dresden", "Köln");
 //        for (Knoten k : fahrplan.kn) System.out.println(k.name);
     }
 
