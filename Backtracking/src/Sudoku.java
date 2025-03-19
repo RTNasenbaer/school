@@ -18,8 +18,8 @@ public class Sudoku {
     }
 
     public Sudoku() {
+        System.out.println(sudoku[0][4]);
         loese(0,0);
-        printSudoku();
     }
 
     public void printSudoku() {
@@ -38,25 +38,32 @@ public class Sudoku {
     }
 
     public void loese(int row, int col) {
-        if (row == 9 && col == 0) return;
-        if (sudoku[row][col] != 0) loese(row + ((col + 1) / 9), (col + 1) % 9);
-        else for (int i = 1; i <= 9; i++) {
-            if (isPossible(i, row, col)) {
-                sudoku[row][col] = i;
-                loese(row + ((col + 1) / 9), (col + 1) % 9);
+        if (row == 9 && col == 0) {
+            printSudoku();
+            return;
+        }
+        if (sudoku[row][col] != 0) {
+            loese(row + ((col + 1) / 9), (col + 1) % 9);
+        } else {
+            for (int i = 1; i <= 9; i++) {
+                if (isPossible(i, row, col)) {
+                    sudoku[row][col] = i;
+                    loese(row + ((col + 1) / 9), (col + 1) % 9);
+                    if (sudoku[row][col] == 0) return; // Add this line to backtrack correctly
+                }
             }
             sudoku[row][col] = 0;
         }
     }
             
     private boolean isPossible(int num, int row, int col) {
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 9; i++) {
             if (sudoku[row][i] == num) return false;
             if (sudoku[i][col] == num) return false;
         }
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (sudoku[((row/3)*3)+i][((col/3)*3)+j] == num) return false;
+        for (int i = (row - row % 3); i < (row - row % 3) + 3; i++) {
+            for (int j = (col - col % 3); j < (col - col % 3) + 3; j++) {
+                if (sudoku[i][j] == num) return false;
             }
         }
         return true;
