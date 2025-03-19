@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96491d53-2de9-4a38-8daa-8f0b2a84495f" name="Changes" comment="Stuff with Turtle">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="96491d53-2de9-4a38-8daa-8f0b2a84495f" name="Changes" comment="Stuff with Turtle" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,12 +19,12 @@
     &quot;assignee&quot;: &quot;RTNasenbaer&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/RTNasenbaer/school.git&quot;,
-    &quot;accountId&quot;: &quot;9f67eabe-26d8-4944-ab16-1518b5492586&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/RTNasenbaer/school.git",
+    "accountId": "9507a5fe-8abc-4c3c-9655-3fcebe833fe0"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -63,8 +61,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-e9a9b764149b-intellij.indexing.shared.core-IU-251.21418.62" />
-        <option value="bundled-js-predefined-d6986cc7102b-6a163169533b-JavaScript-IU-251.21418.62" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
       </set>
     </attachedChunks>
   </component>
@@ -85,6 +83,7 @@
       <workItem from="1738825711020" duration="643000" />
       <workItem from="1739431161116" duration="51000" />
       <workItem from="1740035431637" duration="102000" />
+      <workItem from="1742386933350" duration="76000" />
     </task>
     <task id="LOCAL-00001" summary="Stuff with Turtle">
       <option name="closed" value="true" />
