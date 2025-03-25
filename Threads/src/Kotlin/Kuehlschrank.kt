@@ -6,22 +6,16 @@ class Kuehlschrank {
     private var count: Int = 0
 
     fun hinfzufuegen(ding: Yogurt): String {
-        if (count < yogurt.size) {
-            yogurt[count] = ding
-            count++
-            return "hat Yogurt ${ding.name} hinzugefügt."
-        }
-        return "Kein Platz mehr im Kühlschrank."
+        yogurt[count] = ding
+        count++
+        return "hat Yogurt ${ding.name} hinzugefügt."
     }
 
     fun entnehmen(): String {
-        if (count > 0) {
-            val removedYogurt = yogurt[count - 1]
-            yogurt[count - 1] = null
-            count--
-            return "hat Yogurt ${removedYogurt?.name} entnommen."
-        }
-        return "Kühlschrank ist leer."
+        val removedYogurt = yogurt[count - 1]
+        yogurt[count - 1] = null
+        count--
+        return "hat Yogurt ${removedYogurt?.name} entnommen."
     }
 
     fun yogurtAnzahl() = count
