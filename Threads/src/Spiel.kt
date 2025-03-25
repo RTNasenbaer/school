@@ -17,9 +17,9 @@ class Spiel {
         finn.start()
         lina.start()
     }
+}
 
-    fun main() {
-        Spiel()
-    }
-
+// Top-level main function
+fun main() {
+    Spiel()
 }

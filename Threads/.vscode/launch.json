@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Run Spiel",
+            "request": "launch",
+            "mainClass": "",
+            "preLaunchTask": "Compile Kotlin",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "program": "out/Spiel.jar"
+        }
+    ]
+}

@@ -2,7 +2,11 @@ class Erzeuger(private val name: String, private var kuehlschrank: Kuehlschrank)
 
     override fun run() {
         sleep((Math.random()*2000).toLong())
-        kuehlschrank.hinfzufuegen(Yogurt("Erdbeer"))
+        if (!kuehlschrank.nochPlatz()) {
+            println("Erzeuger $name: Kühlschrank ist voll.")
+            return
+        }
+        println("Erzeuger $name ${kuehlschrank.hinfzufuegen(Yogurt("Vanille"))}")
     }
 
 }

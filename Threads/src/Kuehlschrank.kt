@@ -2,22 +2,22 @@ class Kuehlschrank() {
 
     private val yogurt: MutableList<Yogurt> = mutableListOf()
 
-    fun hinfzufuegen(ding: Yogurt) {
-        if (yogurt.size < 10)
-            yogurt.add(ding)
+    fun hinfzufuegen(ding: Yogurt): String {
+        yogurt.add(ding)
+        return "hat Yogurt ${ding.name} hinzugefügt."
     }
 
-    fun entnehmen() {
-        if (yogurt.size > 0)
-            yogurt.removeAt(yogurt.size - 1)
+    fun entnehmen(): String {
+        return "hat Yogurt ${yogurt.removeAt(yogurt.size - 1).name} entnommen."
     }
 
     fun yogurtAnzahl() = yogurt.size
+
+    fun istLeer(): Boolean = yogurt.isEmpty()
 
     fun nochPlatz():Boolean = yogurt.size < 10
 
 }
 
-class Yogurt(private val name: String) {
-
+class Yogurt(val name: String) { // Changed `private` to `val` for public access
 }

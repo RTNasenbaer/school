@@ -2,7 +2,11 @@ class Verbraucher(private val name: String, private var kuehlschrank: Kuehlschra
 
     override fun run() {
         sleep((Math.random()*2000).toLong())
-        kuehlschrank.entnehmen()
+        if (kuehlschrank.istLeer()) {
+            println("Verbraucher $name: Kühlschrank ist leer.")
+            return
+        }
+        println("Verbraucher $name ${kuehlschrank.entnehmen()}")
     }
     
 }
