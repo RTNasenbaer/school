@@ -1,33 +1,36 @@
 package Java;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Kuehlschrank {
-    private final List<Yogurt> yogurt;
+    private Yogurt[] yogurt;
+    private int anzahl;
 
     public Kuehlschrank() {
-        this.yogurt = new ArrayList<>();
+        this.yogurt = new Yogurt[10];
+        this.anzahl = 0;
     }
 
     public String hinfzufuegen(Yogurt ding) {
-        yogurt.add(ding);
-        return "hat Yogurt " + ding.getName() + " hinzugefügt.";
+            yogurt[anzahl] = ding;
+            anzahl++;
+            return "hat Yogurt " + ding.getName() + " hinzugefügt.";
     }
 
     public String entnehmen() {
-        return "hat Yogurt " + yogurt.remove(yogurt.size() - 1).getName() + " entnommen.";
+            Yogurt removedYogurt = yogurt[anzahl - 1];
+            yogurt[anzahl - 1] = null;
+            anzahl--;
+            return "hat Yogurt " + removedYogurt.getName() + " entnommen.";
     }
 
     public int yogurtAnzahl() {
-        return yogurt.size();
+        return anzahl;
     }
 
     public boolean istLeer() {
-        return yogurt.isEmpty();
+        return anzahl == 0;
     }
 
     public boolean nochPlatz() {
-        return yogurt.size() < 10;
+        return anzahl < yogurt.length;
     }
 }

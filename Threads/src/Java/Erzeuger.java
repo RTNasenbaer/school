@@ -1,8 +1,8 @@
 package Java;
 
 public class Erzeuger extends Thread {
-    private String name;
-    private Kuehlschrank kuehlschrank;
+    private final String name;
+    private final Kuehlschrank kuehlschrank;
 
     public Erzeuger(String name, Kuehlschrank kuehlschrank) {
         this.name = name;
@@ -12,16 +12,17 @@ public class Erzeuger extends Thread {
     @Override
     public void run() {
         while (true) {
-            try {
-                Thread.sleep((long) (Math.random() * 2000));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            if (!kuehlschrank.nochPlatz()) {
-                System.out.println("Erzeuger " + name + ": Kühlschrank ist voll.");
+
+            if (kuehlschrank.nochPlatz()) {
+                try {
+                    Thread.sleep((long) (Math.random() * 2000));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("Erzeuger " + name + " " + kuehlschrank.hinfzufuegen(new Yogurt("Vanille")));
                 return;
             }
-            System.out.println("Erzeuger " + name + " " + kuehlschrank.hinfzufuegen(new Yogurt("Vanille")));
+            System.out.println("Erzeuger " + name + ": Kühlschrank ist voll.");
         }
     }
 }

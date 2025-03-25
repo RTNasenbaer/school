@@ -1,8 +1,8 @@
 package Java;
 
 public class Verbraucher extends Thread {
-    private String name;
-    private Kuehlschrank kuehlschrank;
+    private final String name;
+    private final Kuehlschrank kuehlschrank;
 
     public Verbraucher(String name, Kuehlschrank kuehlschrank) {
         this.name = name;
@@ -12,12 +12,13 @@ public class Verbraucher extends Thread {
     @Override
     public void run() {
         while (true) {
-            try {
-                Thread.sleep((long) (Math.random() * 1800));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
             if (kuehlschrank.istLeer()) {
+                try {
+                    Thread.sleep((long) (Math.random() * 2000));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("Verbraucher " + name + ": Kühlschrank ist leer.");
                 return;
             }
